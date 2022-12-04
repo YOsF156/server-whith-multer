@@ -1,5 +1,5 @@
 const mongoose = require('mongoose')
-require("../db").connect()
+const ProductModel = require("./ProductModel")
 const OrderSchema = new mongoose.Schema({
     userId: {
         type: mongoose.SchemaTypes.ObjectId,
@@ -45,7 +45,6 @@ module.exports = Order
 
 // async function cr() {
 //     const order = await Order.find({ _id: "638cc303fc00901f0c29cebb" }).populate("products.productId")
-//     console.log("🚀 ~ file: OrderModel.js:48 ~ cr ~ order", order[0].products[0].productId)
 // }
 
 // cr()
