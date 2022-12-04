@@ -11,7 +11,7 @@ async function getAllProducts() {
     return await productDl.read({})//אובייקט ריק מחזיר את כל הרשומות
 }
 
-
+module.exports = { createProduct, getAllProducts }// ייצוא כל הפונקציות ואלו שעוד יצטרפו מביזנס לוג'יק לרמת ראוטר שילמד בהמשך
 
 //:דוגמא להוספת המוצרים ע"י שימוש בפונקציה משכבת הביזנס לוג'יק
 // let array = [
