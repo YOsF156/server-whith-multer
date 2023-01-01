@@ -1,17 +1,31 @@
-const productDl = require("../DL/controller/productController")
+const productDl = require("../DL/controller/productController");
 require("../DL/db").connect();
+
+const newProduct = async (newProductDetails) => {
+  return await productDl.create(newProductDetails);
+};
+
+const getAllProducts = async () => {
+  return await productDl.read({}); //אובייקט ריק מחזיר את כל הרשומות
+};
+const getUser = async (filter,proj) => {
+  return await productDl.readOne(filter,proj); //אובייקט ריק מחזיר את כל הרשומות
+};
+const updateProduct = async (filter,newData) => {
+  return await productDl.update(filter,newData); //אובייקט ריק מחזיר את כל הרשומות
+};
+const deleteProduct = async (filter) => {
+  console.log('filt',filter);
+  return await productDl.del(filter); //אובייקט ריק מחזיר את כל הרשומות
+};
 
 
 async function createProduct(data) {
-    if (!data.image || !data.title) throw { message: "missing details" }
-    return await productDl.create(data)
+  if (!data.image || !data.title) throw { message: "missing details" };
+  return await productDl.create(data);
 }
 
-async function getAllProducts() {
-    return await productDl.read({})//אובייקט ריק מחזיר את כל הרשומות
-}
-
-module.exports = { createProduct, getAllProducts }// ייצוא כל הפונקציות ואלו שעוד יצטרפו מביזנס לוג'יק לרמת ראוטר שילמד בהמשך
+module.exports = { newProduct, createProduct, getAllProducts,getUser ,updateProduct,deleteProduct}; // ייצוא כל הפונקציות ואלו שעוד יצטרפו מביזנס לוג'יק לרמת ראוטר שילמד בהמשך
 
 //:דוגמא להוספת המוצרים ע"י שימוש בפונקציה משכבת הביזנס לוג'יק
 // let array = [
@@ -257,7 +271,6 @@ module.exports = { createProduct, getAllProducts }// ייצוא כל הפונק�
 //     }
 // ];
 
-
 // async function addProducts() {
 //     try {
 //         for (v of array) {
@@ -269,4 +282,4 @@ module.exports = { createProduct, getAllProducts }// ייצוא כל הפונק�
 //     }
 // }
 
-// addProducts() 
+// addProducts()
